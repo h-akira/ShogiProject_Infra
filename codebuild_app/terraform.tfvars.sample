@@ -13,7 +13,7 @@ github_repo = "https://github.com/your-username/your-repo"
 # IAM Resource Names
 codebuild_service_role_name = "codebuild-build-sgp-app-service-role"
 codebuild_base_policy_name = "CodeBuildBasePolicy-build-sgp-app-ap-northeast-1"
-common_exec_sam_policy_name = "policy-common-exec-sam"
+common_exec_sam_policy_name = "policy-sgp-app-exec-sam"
 codeconnections_policy_name = "CodeBuildCodeConnectionsSourceCredentialsPolicy-build-sgp-app-ap-northeast-1"
 
 # CodeStar/CodeConnections settings

@@ -16,7 +16,7 @@
 
 - **IAM Policies**:
   - `CodeBuildBasePolicy-build-sgp-app-ap-northeast-1`: CodeBuild基本権限
-  - `policy-common-exec-sam`: SAM実行用共通権限
+  - `policy-sgp-app-exec-sam`: SAM実行用権限
 
 ## セットアップ
 

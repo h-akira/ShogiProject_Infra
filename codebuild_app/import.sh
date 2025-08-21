@@ -15,7 +15,7 @@ echo "Importing CodeBuild base policy..."
 echo "terraform import aws_iam_policy.codebuild_base_policy arn:aws:iam::ACCOUNT_ID:policy/service-role/CodeBuildBasePolicy-PROJECT_NAME-REGION"
 
 echo "Importing common exec SAM policy..."
-echo "terraform import aws_iam_policy.common_exec_sam_policy arn:aws:iam::ACCOUNT_ID:policy/policy-common-exec-sam"
+echo "terraform import aws_iam_policy.common_exec_sam_policy arn:aws:iam::ACCOUNT_ID:policy/policy-sgp-app-exec-sam"
 
 echo "Importing CodeConnections policy..."
 echo "terraform import aws_iam_policy.codeconnections_policy arn:aws:iam::ACCOUNT_ID:policy/service-role/CodeBuildCodeConnectionsSourceCredentialsPolicy-PROJECT_NAME-REGION-ACCOUNT_ID"
