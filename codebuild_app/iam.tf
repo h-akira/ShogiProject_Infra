@@ -158,7 +158,11 @@ resource "aws_iam_policy" "common_exec_sam_policy" {
           "s3:DeleteBucket",
           "s3:Get*",
           "s3:PutBucketPublicAccessBlock",
-          "s3:PutBucketPolicy"
+          "s3:PutBucketPolicy",
+          "s3:PutBucketTagging",
+          "s3:PutBucketVersioning",
+          "s3:PutBucketEncryption",
+          "s3:PutEncryptionConfiguration"
         ]
         Resource = ["*"]
       },
@@ -239,7 +243,8 @@ resource "aws_iam_policy" "common_exec_sam_policy" {
           "iam:PutRolePolicy",
           "iam:GetRolePolicy",
           "iam:ListAttachedRolePolicies",
-          "iam:ListRolePolicies"
+          "iam:ListRolePolicies",
+          "iam:CreateServiceLinkedRole"
         ]
         Resource = [
           "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*"
