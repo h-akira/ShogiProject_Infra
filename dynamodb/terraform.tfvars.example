@@ -1,0 +1,11 @@
+# AWS Profile to use
+aws_profile = "default"
+
+# Environment name
+environment = "production"
+
+# Creation date for tagging (YYYYMMDD format)
+created_date = "20250820"
+
+# DynamoDB table name (must be unique in region)
+dynamodb_table_name = "table-your-project-main"
