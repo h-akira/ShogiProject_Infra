@@ -1,0 +1,20 @@
+# Project configuration
+codebuild_project_name = "build-sgp-app-analysis"
+created_date = "20250820"
+environment = "production"
+
+# AWS Configuration
+aws_profile = "your-aws-profile"
+aws_region = "ap-northeast-1"
+
+# GitHub repository
+github_repo = "https://github.com/h-akira/ShogiProject_Analysis"
+
+# IAM Resource Names
+codebuild_service_role_name = "codebuild-build-sgp-app-analysis-service-role"
+codebuild_base_policy_name = "CodeBuildBasePolicy-build-sgp-app-analysis-ap-northeast-1"
+common_exec_sam_policy_name = "policy-sgp-app-analysis-exec-sam"
+codeconnections_policy_name = "CodeBuildCodeConnectionsSourceCredentialsPolicy-build-sgp-app-analysis-ap-northeast-1"
+
+# CodeStar/CodeConnections settings
+codestar_connection_id = "00000000-0000-0000-0000-000000000000"
