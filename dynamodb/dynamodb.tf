@@ -81,6 +81,17 @@ resource "aws_dynamodb_table" "sgp_main" {
     projection_type = "ALL"
   }
 
+  # Point-in-time recovery
+  point_in_time_recovery {
+    enabled = true
+  }
+
+  # TTL configuration
+  ttl {
+    attribute_name = "expired"
+    enabled        = true
+  }
+
   tags = {
     Name        = var.dynamodb_table_name
     Environment = var.environment

@@ -8,7 +8,7 @@ aws_profile = "your-aws-profile"
 aws_region = "ap-northeast-1"
 
 # GitHub repository
-github_repo = "https://github.com/your-username/your-repo"
+github_repo = "https://github.com/h-akira/ShogiProject"
 
 # IAM Resource Names
 codebuild_service_role_name = "codebuild-build-sgp-app-service-role"

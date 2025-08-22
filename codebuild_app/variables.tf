@@ -31,7 +31,7 @@ variable "aws_region" {
 variable "github_repo" {
   description = "GitHub repository URL"
   type        = string
-  default     = "https://github.com/your-username/your-repo"
+  default     = "https://github.com/h-akira/ShogiProject"
 }
 
 variable "codebuild_service_role_name" {
