@@ -91,7 +91,13 @@ resource "aws_iam_policy" "common_exec_sam_policy" {
         Sid    = "CloudWatchLogs"
         Effect = "Allow"
         Action = [
-          "logs:DescribeLogGroups"
+          "logs:DescribeLogGroups",
+          "logs:CreateLogGroup",
+          "logs:DeleteLogGroup",
+          "logs:PutRetentionPolicy",
+          "logs:DeleteRetentionPolicy",
+          "logs:TagLogGroup",
+          "logs:UntagLogGroup"
         ]
         Resource = ["*"]
       },
@@ -206,6 +212,7 @@ resource "aws_iam_policy" "common_exec_sam_policy" {
           "lambda:DeleteFunction",
           "lambda:GetFunction",
           "lambda:GetFunctionConfiguration",
+          "lambda:InvokeFunction",
           "lambda:ListTags",
           "lambda:RemovePermission",
           "lambda:TagResource",
