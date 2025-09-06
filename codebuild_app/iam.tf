@@ -97,7 +97,10 @@ resource "aws_iam_policy" "common_exec_sam_policy" {
           "logs:PutRetentionPolicy",
           "logs:DeleteRetentionPolicy",
           "logs:TagLogGroup",
-          "logs:UntagLogGroup"
+          "logs:UntagLogGroup",
+          "logs:DescribeResourcePolicies",
+          "logs:DescribeIndexPolicies",
+          "logs:ListTagsForResource"
         ]
         Resource = ["*"]
       },
@@ -212,6 +215,9 @@ resource "aws_iam_policy" "common_exec_sam_policy" {
           "lambda:DeleteFunction",
           "lambda:GetFunction",
           "lambda:GetFunctionConfiguration",
+          "lambda:GetFunctionRecursionConfig",
+          "lambda:GetFunctionCodeSigningConfig",
+          "lambda:GetRuntimeManagementConfig",
           "lambda:InvokeFunction",
           "lambda:ListTags",
           "lambda:RemovePermission",
