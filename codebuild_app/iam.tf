@@ -320,6 +320,18 @@ resource "aws_iam_policy" "common_exec_sam_policy" {
           "cognito-idp:GetUserPoolMfaConfig"
         ]
         Resource = ["*"]
+      },
+      {
+        Sid    = "SSMParameterStore"
+        Effect = "Allow"
+        Action = [
+          "ssm:GetParameter",
+          "ssm:GetParameters",
+          "ssm:GetParametersByPath"
+        ]
+        Resource = [
+          "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/wambda/*"
+        ]
       }
     ]
   })
