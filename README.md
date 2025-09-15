@@ -6,17 +6,28 @@
 
 ShogiProjectは以下のAWSサービスを使用します：
 
+- **Cognito**: ユーザー認証・認可
 - **DynamoDB**: アプリケーションデータの保存
 - **S3**: 静的ファイルのホスティング
 - **CodeBuild**: アプリケーションのビルドとデプロイ
 - **Lambda + API Gateway**: バックエンドAPI（SAMでデプロイ）
 - **CloudFront**: CDNとして静的ファイルとAPIの配信
+- **Systems Manager Parameter Store**: 環境変数の管理
 
 ## インフラ構築手順
 
 ShogiProjectのインフラは以下の順序で構築する必要があります：
 
-### 1. DynamoDB の作成 (Terraform)
+### 1. Cognito の作成 (Terraform)
+
+```bash
+cd cognito
+terraform init
+terraform plan
+terraform apply
+```
+
+### 2. DynamoDB の作成 (Terraform)
 
 ```bash
 cd dynamodb
@@ -25,12 +36,25 @@ terraform plan
 terraform apply
 ```
 
-### 2. S3 の手動作成
+### 3. S3 の手動作成
 
 - 詳細は `ManuallyCreatedResources/S3.md` を参照
 - 静的ウェブサイトホスティング用のS3バケットを手動作成
 
-### 3. CodeBuild の作成 (Terraform)
+### 4. Parameter Store の設定
+
+WAMBDAアプリケーション用の環境変数をAWSコンソールまたはCLIで設定：
+
+```bash
+aws ssm put-parameter --name "/wambda/debug" --value "true" --type String --overwrite
+aws ssm put-parameter --name "/wambda/use_mock" --value "false" --type String --overwrite
+aws ssm put-parameter --name "/wambda/no_auth" --value "false" --type String --overwrite
+aws ssm put-parameter --name "/wambda/deny_signup" --value "false" --type String --overwrite
+aws ssm put-parameter --name "/wambda/deny_login" --value "false" --type String --overwrite
+aws ssm put-parameter --name "/wambda/log_level" --value "INFO" --type String --overwrite
+```
+
+### 5. CodeBuild の作成 (Terraform)
 
 ```bash
 cd codebuild_app
@@ -39,14 +63,14 @@ terraform plan
 terraform apply
 ```
 
-### 4. SAM のデプロイ
+### 6. SAM のデプロイ
 
 CodeBuildにより自動実行されます：
 - Lambda関数の作成
 - API Gatewayの作成
 - 必要なIAMロールの作成
 
-### 5. CloudFront の手動作成
+### 7. CloudFront の手動作成
 
 - 詳細は `ManuallyCreatedResources/CloudFront.md` を参照
 - オリジンとしてS3バケットとAPI Gatewayを指定
@@ -56,6 +80,13 @@ CodeBuildにより自動実行されます：
 ```
 ShogiProject_Infra/
 ├── README.md                     # このファイル
+├── cognito/                      # Cognito用Terraform
+│   ├── main.tf
+│   ├── cognito.tf
+│   ├── outputs.tf
+│   ├── variables.tf
+│   ├── terraform.tfvars
+│   └── terraform.tfvars.sample
 ├── dynamodb/                     # DynamoDB用Terraform
 │   ├── main.tf
 │   ├── dynamodb.tf
